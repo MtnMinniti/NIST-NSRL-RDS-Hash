@@ -21,15 +21,14 @@ def extract_hashes(db_paths: Iterable[str], output_path: str, hash_type: str) ->
 
     with open(output_path, "w") as outfile:
         for db_path in db_paths:
-            conn = sqlite3.connect(db_path)
-            cur = conn.cursor()
-            column = column_for_hash(cur)
-            query = f'SELECT "{column}" FROM NSRLFile'
-            for row in cur.execute(query):
-                value = row[0]
-                if value:
-                    outfile.write(str(value).strip() + "\n")
-            conn.close()
+            with sqlite3.connect(db_path) as conn:
+                cur = conn.cursor()
+                column = column_for_hash(cur)
+                query = f'SELECT "{column}" FROM NSRLFile'
+                for row in cur.execute(query):
+                    value = row[0]
+                    if value:
+                        outfile.write(str(value).strip() + "\n")
 
 class Application(TkinterDnD.Tk):
     def __init__(self):
