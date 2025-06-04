@@ -5,10 +5,10 @@ AI is helping me along the way.
 
 ## NSRL Hash Extractor
 
-This project includes a simple GUI tool to extract MD5 or SHA1 hashes from one
-or more NIST NSRL SQLite databases. You can drag and drop the database files
-onto the window or browse for them and export a combined text file containing
-the hashes.
+This project includes a simple GUI tool (`nsrl_gui.py`) to extract MD5 or SHA1
+hashes from one or more NIST NSRL SQLite databases. You can drag and drop the
+database files onto the window or browse for them and export a combined text
+file containing the hashes.
 
 Because it relies only on the Python standard library (with optional
 `tkinterdnd2` for drag and drop), the script is portable across operating
